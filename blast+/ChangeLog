@@ -1,0 +1,118 @@
+August 2, 2010
+* 2.2.24 release
+* Added support for BLAST Archive format (see BLAST+ user manual)
+* Added the blast_formatter application (see BLAST+ user manual)
+* Added support for translated subject soft masking in the BLAST databases
+* Added support for the BLAST Trace-back operations (btop) output format
+* Added command line options to blastdbcmd for listing available BLAST databases
+* Improved performance of formatting of remote BLAST searches
+* Use a consistent exit code for out of memory conditions
+* Fixed bug in indexed megablast with multiple space-separated BLAST databases
+* Fixed bugs in legacy_blast.pl, blastdbcmd, rpsblast, and makeblastdb
+* Fixed Windows installer for 64-bit installations
+
+Feb 03, 2010
+* 2.2.23 release
+* Bug fix for tabular output formatting involving BLAST databases that do not
+  have parseable deflines.
+* Fixed problem displaying accessions in XML output format.
+* Prevent collisions between queries and subject sequences with local
+  identifiers.
+* Fixed megablast performance regression when used with query masking.
+* Fixed seg filtering failure for blastx and genomic sequences.
+* Implemented saving search strategies in bl2seq mode.
+* Fixed bug in tabular output format with qseq, sseq, pident and ppos keywords.
+* Fixed bug with blastp-short task.
+* Fixed blastdbcmd retrieval of taxids for BLAST databases without GIs.
+* Added makeblastdb support for adding masking information to existing BLAST
+  databases.
+
+Nov 02, 2009
+* Internal bug fix release for 2.2.22
+* Fix issue dealing with opening BLAST databases which contain references to a
+  BLAST database specified with a relative path.
+* Prevent collisions between queries and subject sequences with local
+  identifiers
+
+Sep 27, 2009
+* 2.2.22 release
+* Added entrez_query command line option for restricting BLAST databases.
+* Added support for psi-tblastn to the tblastn command line application via
+  the -in_pssm option.
+* Improved documentation for subject masking feature in user manual.
+* User interface improvements to windowmasker.
+* Made the specification of BLAST databases to resolve GIs/accessions
+  configurable.
+* update_blastdb.pl downloads and checks BLAST database MD5 checksum files.
+* Allowing long words with blastp.
+* Added support for overriding megablast index when importing search strategy
+  files.
+* Added support for best-hit algorithm parameters in strategy files.
+* Bug fixes in blastx and tblastn with genomic sequences, subject masking,
+  blastdbcheck, and the SEG filtering algorithm.
+
+May 27, 2009
+* First 2.2.21 release
+* Added support for Best-Hit algorithm.
+* Added support for -in_msa psiblast option. 
+* Performance improvements and bug fixes to subject soft masking feature (note:
+  the file format for the files containing the masking information has changed
+  in a non-backwards compatible way).
+* Changed command line option to specify single soft masking algorithm to mask
+  BLAST databases from -mask_subjects to -db_soft_mask.
+* Masked FASTA and subject masks can be obtained via blastdbcmd.
+* Improved error messages when makeblastdb processes masking information.
+* Bug fixes in tabular output for translated searches.
+* Bug fixes to makeblastdb.
+* Bug fixes to search strategies and megablast.
+* Bug fixes to XML output.
+* Bug fixes and performance improvements to multi-threaded execution.
+* Bug fixes to lower case masking in blastx.
+* Bug fixes to ungapped searches.
+* Added support for smaller lookup tables for small queries.
+* Added support for partial sequence fetching during traceback.
+* Fixed the 2-hit algorithm so that no overlap between two hits is allowed.
+* Implemented a new method to compute effective observations and new
+entropy-based method to compute column-specific pseudocounts in PSI-BLAST.
+* Remote BLAST database data loader is used as a fallback if local BLAST 
+databases cannot be found.
+* Bug fixes, improved error messages, and support for ASN.1 input in 
+makeblastdb.
+* Bug fixes and performance improvements to subject masking feature.
+* Added the update_blastdb.pl script
+* Updated BLAST+ user manual with documentation about configuring BLAST, 
+automatic resolution of sequence identifiers, and a description of how the 
+BLAST databases are searched.
+
+November 3, 2008
+* First 2.2.19 release
+* Made sequence ID/title display uniform in sequence filtering applications.
+* Fixed incorrect display of filtering options in XML output.
+* Fixed handling of empty sequences in BLAST input. 
+* Fixed negative strand handling for tblastn/tblastx.
+
+October 14, 2008
+* Added update_blastdb.pl script to distribution of BLAST+ command line 
+  applications.
+* Changed a few PSI-BLAST constants for pseudo-counts.
+* Bug fix in blastdbcmd to distinguish non-redundant sequence titles.
+* Bug fix to display BLAST database information remotely from outside NCBI for
+  XML output. 
+
+September 24, 2008
+* Fix to prevent initial seed extension from going beyond context boundary.
+* Improvements to reduce memory usage when query splitting is applied.
+* Print the accession and version for blastdbcmd's %a output format.
+* gilists/negative gilists are not saved in search strategies or supported in
+  remote blast searches.
+* legacy_blast.pl fixed for MacOSX, as well as extended support for megablast
+  formatting options (-D, -f).
+* Enhancements to Mac installer to add installation path to user's PATH.
+* ASN.1 output is now of type Seq-annot.
+* -lcase_masking option now applies to subject sequences as well as queries.
+* Bug fix for creation of masked databases with non-redundant sequences that use
+  a BLAST database as its data source.
+* Bug fix for merging masking locations.
+
+August 21, 2008
+* First internal release

@@ -1,0 +1,205 @@
+<html>
+<head> <title>ViroBLAST Search main parameters</title>
+<link href="../stylesheets/viroblast.css"  rel="Stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+
+    <div id="header">
+	    <div class="spacer">&nbsp;</div>    
+		<span class="logo">ViroBLAST</span>   
+    </div>
+    
+    <div id="nav">
+    	<span class='nav'><a class="nav" href="../viroblast.php">Home</a></span>
+		<span class='nav'><a class="nav" href=aboutviroblast.html>About ViroBLAST</a></span>
+		<span class='nav'><a href=viroblasthelp.html class="nav">Help</a></span>
+		&nbsp;
+	</div>
+    
+    <div id="indent">
+<h2 align=center>ViroBLAST Search main parameters</h2>
+
+<p>
+<dl>
+<dt><b><a name=format></a>Sequence Format</b>
+<dd>
+Fasta: A common sequence format offered by most sequence and alignment editors.
+<dd>Format: A 'greater than' symbol followed by the sequence name. The following line is the sequence.
+<dd>Example:
+<dd>>RL228e1
+<dd>AGAAGAAGAGGTAGTAATTAGATCTGACAATTTCACGGACAATGCTAAAACTATAATAGTACAGCTGAAAGAACCTGT
+AGAAATTAATTGTACAAGACCCCACAACAATACAAGAAGAAGGATAAGTATAGGACCAGGGAGAGCATTTTATGCAAC
+
+<p>
+<dt><b><a name = expect></a>Expect</b>
+
+<dd>
+The statistical significance threshold for reporting
+matches against database sequences; the default value
+is 10, such that 10 matches are expected to be found
+merely by chance, according to the stochastic model
+of Karlin and Altschul (1990).  If the statistical
+significance ascribed to a match is greater than the
+EXPECT threshold, the match will not be reported.
+Lower EXPECT thresholds are more stringent, leading
+to fewer chance matches being reported.  Fractional
+values are acceptable.
+
+<p>
+<dt><b><a name = wordsize></a>Word size</b>
+
+<dd>
+Word size for wordfinder algorithm (length of initial exact match).
+
+<p>
+<dt><b><a name = targetseqs></a>Max target sequences</b>
+
+<dd>
+Maximum number of descriptions and alignments to keep. The default value is 50.
+
+<p>
+<dt><b><a name = mmscore></a>Match/Mismatch scores</b>
+
+<dd>
+For BLASTN, the scores are reward for a nucleotide match and penalty for a nucleotide mismatch.
+
+<p>
+<dt><b><a name = matrix></a>Matrix</b>
+
+<dd>
+Scoring matrix name. The default matrix is BLOSUM62.
+
+<p>
+<dt><b><a name = gapcost></a>Gap costs</b>
+
+<dd>
+Costs to open and extend a gap.
+
+<P>
+<dt><b><a name = filter></a>Filter (Low-complexity)</b>
+<dd> 
+Mask off segments of the query sequence that have
+low compositional complexity, as determined by the
+SEG program of Wootton & Federhen (Computers and
+Chemistry, 1993) or, for BLASTN, by the DUST
+program of Tatusov and Lipman (in preparation).  
+Filtering can eliminate statistically significant but 
+biologically uninteresting reports from the blast 
+output (e.g., hits against common acidic-, basic- or 
+proline-rich regions), leaving the more biologically 
+interesting regions of the query sequence available 
+for specific matching against database sequences. 
+
+Filtering is only applied to the query sequence (or
+its translation products), not to database sequences.
+Default filtering is DUST for BLASTN, SEG for other
+programs. 
+
+It is not unusual for nothing at all to be masked
+by SEG, when applied to sequences in SWISS-PROT, 
+so filtering should not be expected to
+always yield an effect.  Furthermore, in some cases,
+sequences are masked in their entirety, indicating that
+the statistical significance of any matches reported
+against the unfiltered query sequence should be suspect.
+
+<p><dt><b><a name = lookup></a>Mask for lookup table only</b>
+<dd> 
+
+This option masks only for purposes of constructing the lookup
+table used by BLAST.  The BLAST extensions are performed without
+masking.
+
+<p><dt><b><a name = lookup></a>Mask for lower case letters</b>
+<dd> 
+Choose to use lower case filtering in query and subject sequence(s).
+
+<p><dt><b><a name = gapalign></a>Alignment</b>
+<dd> 
+Choose to perform ungapped alignment.
+
+<p>
+<dt><b><a name = outfmt></a>Alignment output format</b>
+<dd>
+Standard BLAST alignment in pairs of query sequence and database match. For nucleotide, the matches are marked by
+a pipe symbol ("|") in between query and database sequence. For protein, the identical matches are marked by letter
+code with "homologous" substitutions (determined by the scoring matrix used) marked by "+" symbol in a line between
+the query and the database sequence. 
+
+<p>
+<dd>
+	<b>Pairwise</b>
+
+		<dd>The databases alignments are anchored (shown in relation to) to the query sequence in pairwised fashion.
+
+	<p><dd><b>Query-anchored with identities</b>
+
+		<dd>The databases alignments are anchored (shown in relation to) to the query sequence. 
+		Identities are displayed as dots (<b>.</b>), with mismatches displayed as single letter  
+		abbreviations.
+
+	<p><dd><b>Query-anchored without identities</b>
+
+		<dd>Identities are shown as single letter nucleotide abbreviations.
+
+	<p><dd><b>Flat Query-anchored with identities</b>
+
+		<dd>The 'flat' display shows inserts as deletions on the query. Identities are displayed as dots (<b>.</b>), 
+		with mismatches displayed as single letter abbreviations.
+
+	<p><dd><b>Flat Query-anchored without identities</b>
+
+		<dd>The 'flat' display shows inserts as deletions on the query. Identities are shown as single letter 
+		abbreviations.
+		
+	<p><dd><b>XML Blast output</b>
+	
+	<p><dd><b>Tabular</b>
+
+		<dd>Simple output with different aligment information separated according to tab delimited fields with field headers
+		are displayed at the top.
+		
+	<p><dd><b>Tabular with comment lines</b>
+
+<p>
+<dt><b><a name = qcode></a>Query Genetic Code</b>
+<dd> 
+Genetic code to be used to translate query.
+
+<p>
+<dt><b><a name = dbcode></a>Query Genetic Code</b>
+<dd> 
+Genetic code to be used to translate database.
+
+<p>
+<dt><b><a name = other></a>Other parameters</b>
+<dd> 
+Users can set other more parameters to perform BLAST search.
+
+<p>
+<dt><b><a name = descriptions></a>Descriptions</b>
+<dd>Restricts the number of short descriptions of matching
+sequences reported to the number specified; default
+limit is 50 descriptions.  See also Expect.
+
+<p>
+<dt><b><a name = alignments></a>Alignments</b>
+<dd>Restricts database sequences to the number specified for
+which high-scoring segment pairs (HSPs) are reported;
+the default limit is 50.  If more database sequences
+than this happen to satisfy the statistical
+significance threshold for reporting (see Expect), 
+only the matches ascribed the greatest statistical 
+significance are reported.		
+
+</dl>
+</div>
+	<div id="footer" align=center>
+		<p>&copy; 2005-2010 University of Washington. All rights reserved.</font>
+		&nbsp;<a href=termsofservice.html>Terms of Service</a>
+		</p>
+	</div>
+</div>
+</body>
+</html>

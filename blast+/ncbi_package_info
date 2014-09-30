@@ -1,0 +1,168 @@
+PACKAGE_NAME: blast
+PACKAGE_VERSION: 2.2.24
+PACKAGE_SIGNATURE: ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+PACKAGE_CONFIG: Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+>>>>>  blastp
+
+blastp: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  blastn
+
+blastn: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  blastx
+
+blastx: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  tblastn
+
+tblastn: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  tblastx
+
+tblastx: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  psiblast
+
+psiblast: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  rpsblast
+
+rpsblast: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  rpstblastn
+
+rpstblastn: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  makembindex
+
+makembindex: 0.0.0
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  segmasker
+
+segmasker: 1.0.0
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  dustmasker
+
+dustmasker: 1.0.0
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  windowmasker
+
+windowmasker: 1.0.0
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  makeblastdb
+
+makeblastdb: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  blastdbcmd
+
+blastdbcmd: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  blastdb_aliastool
+
+blastdb_aliastool: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  convert2blastmask
+
+convert2blastmask: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  blastdbcheck
+
+blastdbcheck: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+>>>>>  blast_formatter
+
+blast_formatter: 2.2.24+
+Package: blast 2.2.24, build Aug 12 2010 17:47:58
+ ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
+ Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+
+
+
+

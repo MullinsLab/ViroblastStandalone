@@ -1,0 +1,23 @@
+July 16, 2013
+# version 2.4+
+  * implemented NCBI BLAST+ applications (ncbi-blast-2.2.28+)
+  * fixed bug in incompatibility of parameters between NCBI BLAST+ versions, when the outfmt
+    is greater than 4 (xml or tabular output formats)
+  * increased php execution time in sequence.php to handle downloading huge sequence databases
+
+Aug. 7, 2012
+# version 2.3+
+  * fixed bug in split() that has been deprecated as of PHP 5.3.0, replaced by preg_split()
+
+Jan. 18, 2011
+# version 2.2+
+  * fixed bug in sorting columns of identities and e-value in tabular output
+
+Sept. 10, 2010
+# version 2.1+
+  * implemented NCBI BLAST+ applications (ncbi-blast-2.2.24+)
+  * added feature to sort the output table by columns
+
+July 21, 2010
+# version 2.0+
+  * implemented NCBI BLAST+ applications (ncbi-blast-2.2.23+)

@@ -1,0 +1,15 @@
+Job Id: 
+Search type: 
+Blast against: 
+Program: 
+Blast path: 
+Expect: 
+Word size: 
+Max target sequences: 
+Filter low complexity regions: 
+Mask for lookup table only: 
+Mask for lower case letters: 
+Perform ungapped alignment: 
+BLAST output format: 
+Command: / -db "" -query ./data/.blastinput.txt -out ./data/.out -html -evalue  -word_size  -outfmt  -soft_masking true -num_descriptions  -num_alignments  2>./data/.err
+Program failed: 32256
