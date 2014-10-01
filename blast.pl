@@ -11,10 +11,16 @@ use strict;
 
 my $basicParam = $ARGV[0];
 my $advanceParam = $ARGV[1];
-my ($jobid, $searchType, $blastagainst, $program, $blastPath) = split /\t/, $basicParam;
+my ($jobid, $searchType, $blastagainst, $program, $blastPath) = split /!!!/, $basicParam;
 
 if ($blastPath =~ /\/\s*$/) {
 	$blastPath =~ s/\/\s*$//;
+}
+if ($blastPath =~ /^\s+/) {
+	$blastPath =~ s/^\s+//;
+}
+if ($blastagainst =~ /^\s+/) {
+	$blastagainst =~ s/^\s+//;
 }
 my $dataPath = "./data";
 open LOG, ">$dataPath/$jobid.log";
@@ -22,45 +28,47 @@ open LOG, ">$dataPath/$jobid.log";
 my $format = 0;
 # viroblast default setting for max target sequences is 50
 my $num_descriptions = my $num_alignments = my $max_target_seqs = 50;
-
+print LOG "basicParam: $basicParam\n";
+print LOG "advanceParam: $advanceParam\n";
 print LOG "Job Id: ", $jobid, "\n";
 print LOG "Search type: $searchType\n";
 print LOG "Blast against: ", $blastagainst, "\n";
 print LOG "Program: ", $program, "\n";
 print LOG "Blast path: ", $blastPath, "\n";
 
-my $command = "$blastPath/$program";
+my @cmd = ();
+push @cmd, "$blastPath/$program";
 if ($program eq 'blastn' || $program eq 'blastp') {
-	$command .= " -task $program";
+	push @cmd, '-task', $program;
 }
-$command .= " -db \"$blastagainst\" -query $dataPath/$jobid.blastinput.txt -out $dataPath/$jobid.out";
+push @cmd, '-db', $blastagainst, '-query', "$dataPath/$jobid.blastinput.txt", '-out', "$dataPath/$jobid.out";
 if ($searchType eq "basic") {
-	$command .= " -html";
+	push @cmd, '-html';
 }else {
-	my ($expect, $wordSize, $targetSeqs, $mmScore, $matrix, $gapCost, $filter, $softMask, $lowerCaseMask, $ungapAlign, $outfmt, $geneticCode, $dbGeneticCode, $otherParam) = split /!#%/, $advanceParam;
+	my ($expect, $wordSize, $targetSeqs, $mmScore, $matrix, $gapCost, $filter, $softMask, $lowerCaseMask, $ungapAlign, $outfmt, $geneticCode, $dbGeneticCode, $otherParam) = split /!!!/, $advanceParam;
 	$num_descriptions = $num_alignments = $max_target_seqs = $targetSeqs;
 	$format = $outfmt;
 	unless ($format) {
-		$command .= " -html";
+		push @cmd, '-html';
 	}
-	$command .= " -evalue $expect -word_size $wordSize -outfmt $format";
+	push @cmd, '-evalue', $expect, '-word_size', $wordSize, '-outfmt', $format;
 	print LOG "Expect: $expect\n";
 	print LOG "Word size: $wordSize\n";
 	print LOG "Max target sequences: $targetSeqs\n";	
 	if ($mmScore) {
 		my ($reward, $penalty) = split /,/, $mmScore;
-		$command .= " -reward $reward -penalty $penalty";	
+		push @cmd, '-reward', $reward, '-penalty', $penalty;
 		print LOG "Nucleotide match reward: $reward\n";
 		print LOG "Nucleotide mismatch penalty: $penalty\n";
 	}
 	if ($matrix) {
-		$command .= " -matrix $matrix";
+		push @cmd, '-matrix', $matrix;
 		print LOG "Matrix: $matrix\n";
 	}
 	if ($gapCost && $gapCost =~ /Existence: (\d+), Extension: (\d+)/) {	# tblastx no gap costs options
 		my $gapOpen = $1;
 		my $gapExtend = $2;
-		$command .= " -gapopen $gapOpen -gapextend $gapExtend";
+		push @cmd, '-gapopen', $gapOpen, '-gapextend', $gapExtend;
 		print LOG "Gap open cost: $gapOpen\n";
 		print LOG "Gap extend cost: $gapExtend\n";
 	}
@@ -71,59 +79,62 @@ if ($searchType eq "basic") {
 	print LOG "BLAST output format: $format\n";
 	if ($filter eq 'F') {
 		if ($program eq 'blastn') {	# for blastn, default filter is "-dust yes"
-			$command .= " -dust no";
+			push @cmd, '-dust', 'no';
 		}else {	# else except blastp, default filter is "-seg yes";
 			unless ($program eq 'blastp') {
-				$command .= " -seg no";
+				push @cmd, '-seg', 'no';
 			}			
 		}
 	}else {
 		if ($program eq 'blastp') {	# for blastp, default filter is "-seg no"
-			$command .= " -seg yes";
+			push @cmd, '-seg', 'yes';
 		}
 	}
 	if ($softMask eq 'F') {
 		if ($program eq 'blastn') {	# the default value of soft masking for blastn is true
-			$command .= " -soft_masking false";
+			push @cmd, '-soft_masking', 'false';
 		}
 	}else {
 		unless ($program eq 'blastn') {	# the default value of soft masking other than blastn is false
-			$command .= " -soft_masking true";
+			push @cmd, '-soft_masking', 'true';
 		}
 	}
 	if ($lowerCaseMask eq 'L') {	# the default value of lower case masking for all programs is false
-		$command .= " -lcase_masking";
+		push @cmd, '-lcase_masking';
 	}
 	if ($ungapAlign eq 'T') {	# default is gapped alignment
-		$command .= " -ungapped";
+		push @cmd, '-ungapped';
 	}
 	if ($geneticCode) {
-		$command .= " -query_gencode $geneticCode";
+		push @cmd, '-query_gencode', $geneticCode;
 		print LOG "Query genetic code: $geneticCode\n";
 	}
 	if ($dbGeneticCode) {
-		$command .= " -db_gencode $dbGeneticCode";
+		push @cmd, '-db_gencode', $dbGeneticCode;
 		print LOG "Database genetic code: $dbGeneticCode\n";
 	}
 	if ($otherParam) {
-		$command .= " $otherParam";
+		if ($otherParam =~ /^\s+/) {
+			$otherParam =~ s/^\s+//;
+		}
+		my @otherArgs = split /\s+/, $otherParam;
+		push @cmd, @otherArgs;
 		print LOG "Other parameters: $otherParam\n";
 	}
 }
 if ($format < 5) {
-	$command .= " -num_descriptions $num_descriptions -num_alignments $num_alignments 2>$dataPath/$jobid.err";
+	push @cmd, '-num_descriptions', $num_descriptions, '-num_alignments', $num_alignments;
 }else {
-	$command .= " -max_target_seqs $max_target_seqs 2>$dataPath/$jobid.err";
+	push @cmd, '-max_target_seqs', $max_target_seqs;
 }
-
-print LOG "Command: $command\n";
-
+print LOG "cmd: ", join(' ', @cmd), "\n";
+open STDERR, ">$dataPath/$jobid.err";
 if($blastagainst =~ /blastagainst\.txt/) {
 	my $rv = 0;
 	if ($program eq "blastp" || $program eq "blastx") {
-		$rv = system("$blastPath/makeblastdb -in $dataPath/$jobid.blastagainst.txt -logfile $dataPath/$jobid.makeblastdb.log 2>$dataPath/$jobid.err");
+		$rv = system("$blastPath/makeblastdb", '-in', "$dataPath/$jobid.blastagainst.txt", '-logfile', "$dataPath/$jobid.makeblastdb.log", '-dbtype', 'prot');
 	}else {
-		$rv = system("$blastPath/makeblastdb -in $dataPath/$jobid.blastagainst.txt -logfile $dataPath/$jobid.makeblastdb.log -dbtype nucl 2>$dataPath/$jobid.err");
+		$rv = system("$blastPath/makeblastdb", '-in', "$dataPath/$jobid.blastagainst.txt", '-logfile', "$dataPath/$jobid.makeblastdb.log", '-dbtype', 'nucl');
 	}
 	unless ($rv == 0) {
 		print LOG "makeblastdb failed: $rv\n";
@@ -134,7 +145,7 @@ if($blastagainst =~ /blastagainst\.txt/) {
 		exit;
 	}
 }
-my $rv = system ($command);
+my $rv = system (@cmd);
 unless ($rv == 0) {
 	print LOG "Program failed: $rv\n";
 	close LOG;
@@ -312,10 +323,10 @@ if ($format) {
 					close INDEX;
 					close OUT;
 					my $blastfile = "$dataPath/$jobid.blast$page.html";
-					system("cat $index_file $tmp_file > $blastfile");
+					system("cat", $index_file, $tmp_file, ">$blastfile");
 					if($end_query == $num_query) {
 						my $blastlastfile = "$dataPath/$jobid.blastlast.html";
-						system("cat $index_file $tmp_file > $blastlastfile");
+						system("cat", $index_file, $tmp_file, ">$blastlastfile");
 					}
 					$page++;
 					$start_query = $acc_query;

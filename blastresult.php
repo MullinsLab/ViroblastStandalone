@@ -10,7 +10,7 @@
 ?>
 
 <html>
-<head><title>ViroBLAST Results Page</title>
+<head><title>ViroBLAST Result Page</title>
 <link href="stylesheets/viroblast.css"  rel="Stylesheet" type="text/css" />
 <script type="text/javascript" src='javascripts/sorttable.js'></script>
 <script type="text/javascript">
@@ -104,7 +104,7 @@ if ($searchType == 'advanced') {
 			exit;
 		}
 	}	
-	$advanceParam = "$expect!#%$wordSize!#%$targetSeqs!#%$mmScore!#%$matrix!#%$gapCost!#%$filter!#%$softMask!#%$lowerCaseMask!#%$ungapAlign!#%$alignmentView!#%$geneticCode!#%$dbGeneticCode!#%$otherParam";
+	$advanceParam = "\"$expect!!!$wordSize!!!$targetSeqs!!!$mmScore!!!$matrix!!!$gapCost!!!$filter!!!$softMask!!!$lowerCaseMask!!!$ungapAlign!!!$alignmentView!!!$geneticCode!!!$dbGeneticCode!!!$otherParam\"";
 }else {
 	$advanceParam = "";
 }
@@ -213,7 +213,7 @@ if($blast_flag == 1) {
 			
 			@ $fp = fopen($uploadfile, "w", 1);
 			if(!$fp) {
-				echo "<p><strong> Error: ouldn't open $uploadfile </strong></p></body></html>";
+				echo "<p><strong> Error: couldn't open $uploadfile </strong></p></body></html>";
 				exit;
 			}
 			fwrite($fp, $buffer);
@@ -265,12 +265,13 @@ if($blast_flag == 1) {
 		for ($i = 0; $i < sizeof($patientIDarray); $i++) {
 			$blastagainst .= " $dbPath/$patientIDarray[$i]";			
 		}
-	}
-	
-	$basicParam = "$jobid\t$searchType\t$blastagainst\t$program\t$blastpath";
-	
+	}	
+	$basicParam = "\"$jobid!!!$searchType!!!$blastagainst!!!$program!!!$blastpath\"";	
+	$cmd = 'perl blast.pl '.$basicParam.' '.$advanceParam.' '.'>/dev/null &';
+	$escaped_cmd = escapeshellcmd($cmd);
+//	echo $escaped_cmd."<br>";
 	/*create child process to run perl script which do the blast search and write output data to apropriate files*/
-	system("perl blast.pl \"$basicParam\" \"$advanceParam\" >/dev/null &");
+	system($escaped_cmd);
 }
 
 /* error log if there is error in BLAST */
