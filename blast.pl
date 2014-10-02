@@ -11,7 +11,7 @@ use strict;
 
 my $basicParam = $ARGV[0];
 my $advanceParam = $ARGV[1];
-my ($jobid, $searchType, $blastagainst, $program, $blastPath) = split /!!!/, $basicParam;
+my ($jobid, $searchType, $blastagainst, $program, $blastPath) = split /!#%/, $basicParam;
 
 if ($blastPath =~ /\/\s*$/) {
 	$blastPath =~ s/\/\s*$//;
@@ -45,7 +45,7 @@ push @cmd, '-db', $blastagainst, '-query', "$dataPath/$jobid.blastinput.txt", '-
 if ($searchType eq "basic") {
 	push @cmd, '-html';
 }else {
-	my ($expect, $wordSize, $targetSeqs, $mmScore, $matrix, $gapCost, $filter, $softMask, $lowerCaseMask, $ungapAlign, $outfmt, $geneticCode, $dbGeneticCode, $otherParam) = split /!!!/, $advanceParam;
+	my ($expect, $wordSize, $targetSeqs, $mmScore, $matrix, $gapCost, $filter, $softMask, $lowerCaseMask, $ungapAlign, $outfmt, $geneticCode, $dbGeneticCode, $otherParam) = split /!#%/, $advanceParam;
 	$num_descriptions = $num_alignments = $max_target_seqs = $targetSeqs;
 	$format = $outfmt;
 	unless ($format) {

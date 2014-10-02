@@ -1,6 +1,6 @@
 Oct. 10, 2014
 # version 2.5+
-  * fixed security issues by passing argument to system call using escaped command-line in php
+  * fixed security issues by passing argument to system call using escaped shell arg in php
     or an array in perl.
 
 July 16, 2013

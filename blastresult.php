@@ -104,7 +104,7 @@ if ($searchType == 'advanced') {
 			exit;
 		}
 	}	
-	$advanceParam = "\"$expect!!!$wordSize!!!$targetSeqs!!!$mmScore!!!$matrix!!!$gapCost!!!$filter!!!$softMask!!!$lowerCaseMask!!!$ungapAlign!!!$alignmentView!!!$geneticCode!!!$dbGeneticCode!!!$otherParam\"";
+	$advanceParam = "$expect!#%$wordSize!#%$targetSeqs!#%$mmScore!#%$matrix!#%$gapCost!#%$filter!#%$softMask!#%$lowerCaseMask!#%$ungapAlign!#%$alignmentView!#%$geneticCode!#%$dbGeneticCode!#%$otherParam";
 }else {
 	$advanceParam = "";
 }
@@ -266,12 +266,9 @@ if($blast_flag == 1) {
 			$blastagainst .= " $dbPath/$patientIDarray[$i]";			
 		}
 	}	
-	$basicParam = "\"$jobid!!!$searchType!!!$blastagainst!!!$program!!!$blastpath\"";	
-	$cmd = 'perl blast.pl '.$basicParam.' '.$advanceParam.' '.'>/dev/null &';
-	$escaped_cmd = escapeshellcmd($cmd);
-//	echo $escaped_cmd."<br>";
+	$basicParam = "$jobid!#%$searchType!#%$blastagainst!#%$program!#%$blastpath";	
 	/*create child process to run perl script which do the blast search and write output data to apropriate files*/
-	system($escaped_cmd);
+	system('perl blast.pl '.escapeshellarg($basicParam).' '.escapeshellarg($advanceParam)." >/dev/null &");
 }
 
 /* error log if there is error in BLAST */
