@@ -97,7 +97,7 @@ the output.
 server.
 
 #### ./viroblast/blast+/
-- Default standalone BLAST+ program for linux ia32 downloaded
+- Default standalone BLAST+ program for linux/x64 downloaded
 from NCBI.
 
 #### ./viroblast/data/
