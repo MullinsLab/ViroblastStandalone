@@ -8,6 +8,7 @@
 #######################################################################################
 
 use strict;
+use File::Copy;
 
 my $basicParam = $ARGV[0];
 my $advanceParam = $ARGV[1];
@@ -323,11 +324,9 @@ if ($format) {
 					close INDEX;
 					close OUT;
 					my $blastfile = "$dataPath/$jobid.blast$page.html";
-					system("cat", $index_file, $tmp_file, ">$blastfile");
-					if($end_query == $num_query) {
-						my $blastlastfile = "$dataPath/$jobid.blastlast.html";
-						system("cat", $index_file, $tmp_file, ">$blastlastfile");
-					}
+					open my $blastfile_fh, ">", $blastfile or die "Cannot open('>', '$blastfile'): $!";
+					copy($_, $blastfile_fh) for $index_file, $tmp_file;
+					close $blastfile_fh or die "Writing to $blastfile failed: $!";
 					$page++;
 					$start_query = $acc_query;
 					$top_query = $line;
