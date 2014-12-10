@@ -327,6 +327,12 @@ if ($format) {
 					open my $blastfile_fh, ">", $blastfile or die "Cannot open('>', '$blastfile'): $!";
 					copy($_, $blastfile_fh) for $index_file, $tmp_file;
 					close $blastfile_fh or die "Writing to $blastfile failed: $!";
+					if($end_query == $num_query) {
+						my $blastlastfile = "$dataPath/$jobid.blastlast.html";
+						open my $blastlastfile_fh, ">", $blastlastfile or die "Cannot open('>', '$blastlastfile'): $!";
+						copy($_, $blastlastfile_fh) for $index_file, $tmp_file;
+						close $blastlastfile_fh or die "Writing to $blastlastfile failed: $!";
+					}
 					$page++;
 					$start_query = $acc_query;
 					$top_query = $line;

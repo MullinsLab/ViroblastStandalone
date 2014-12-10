@@ -1,3 +1,11 @@
+Dec. 10, 2014
+# version 2.5.3+
+  # fixed the missing link of the last blast output html page caused by previous update
+
+Oct. 14, 2014
+# version 2.5.2+
+  * fixed bug of calling system for cat
+
 Oct. 10, 2014
 # version 2.5+
   * fixed security issues by passing argument to system call using escaped shell arg in php
