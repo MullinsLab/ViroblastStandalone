@@ -24,7 +24,7 @@ if ($blastagainst =~ /^\s+/) {
 	$blastagainst =~ s/^\s+//;
 }
 my $dataPath = "./data";
-open LOG, ">$dataPath/$jobid.log";
+open LOG, ">", "$dataPath/$jobid.log" or die "couldn't open log file: $!\n";
 
 my $format = 0;
 # viroblast default setting for max target sequences is 50
@@ -129,7 +129,7 @@ if ($format < 5) {
 	push @cmd, '-max_target_seqs', $max_target_seqs;
 }
 print LOG "cmd: ", join(' ', @cmd), "\n";
-open STDERR, ">$dataPath/$jobid.err";
+open STDERR, ">", "$dataPath/$jobid.err" or die "couldn't open error log: $!\n";
 if($blastagainst =~ /blastagainst\.txt/) {
 	my $rv = 0;
 	if ($program eq "blastp" || $program eq "blastx") {
@@ -139,7 +139,7 @@ if($blastagainst =~ /blastagainst\.txt/) {
 	}
 	unless ($rv == 0) {
 		print LOG "makeblastdb failed: $rv\n";
-		open ERR, ">>$dataPath/$jobid.err" or die "couldn't open $jobid.err\n";
+		open ERR, ">>", "$dataPath/$jobid.err" or die "couldn't open $jobid.err: $!\n";
 		print ERR "makeblastdb failed\n";
 		close ERR;
 		close LOG;
@@ -154,18 +154,20 @@ unless ($rv == 0) {
 }
 
 my $infile = "$dataPath/$jobid.out";
-open(IN, $infile) || die "Cannot open in file\n";
 if ($format) {
-	open (OUT, ">$dataPath/$jobid.blast") or die "Couldn't open $jobid.blast: $!\n";
+	open IN, $infile or die "Cannot open in file\n";
+	open OUT, ">", "$dataPath/$jobid.blast" or die "Couldn't open $jobid.blast: $!\n";
 	while (my $line = <IN>) {
 		chomp $line;
 		print OUT $line,"\n";
 	}
+	close IN;
 	close OUT;
 }else {	
 	my $size = (-s $infile);
 	my $num_query = 0;
 	my @query_array = ();
+	open IN, $infile or die "Cannot open in file\n";
 	while(my $line = <IN>) {
 		if($line =~ /<b>Query=<\/b>/) {
 			$num_query++;			
@@ -186,11 +188,11 @@ if ($format) {
 		$size_per_page = int($size/$num_page/100000)/10;
 	}
 	
-	open(IN, $infile) || die "Cannot open in file\n";
-	open(OUT1, ">$dataPath/$jobid.blast1.html") || die "Cannot open file $jobid.blast1.html: $!\n";
-	open(OUT2, ">$dataPath/$jobid.out.par") || die "Cannot open file $jobid.out.par: $!\n";
-	open(OUT3, ">$dataPath/$jobid.par") || die "Cannot open file $jobid.par: $!\n";
-	open(OUT4, ">$dataPath/$jobid.blastcount.txt") || die "Cannot open file $jobid.blastcount.txt: $!\n";
+	open IN, $infile or die "couldn't open in file\n";
+	open OUT1, ">", "$dataPath/$jobid.blast1.html" or die "couldn't open file $jobid.blast1.html: $!\n";
+	open OUT2, ">", "$dataPath/$jobid.out.par" or die "couldn't open file $jobid.out.par: $!\n";
+	open OUT3, ">", "$dataPath/$jobid.par" or die "couldn't open file $jobid.par: $!\n";
+	open OUT4, ">", "$dataPath/$jobid.blastcount.txt" or die "couldn't open file $jobid.blastcount.txt: $!\n";
 	
 	my $query_flag = 0;
 	my $print_flag = 0;
@@ -205,7 +207,7 @@ if ($format) {
 	my $start_query = my $end_query = 1;
 	my $link = "";
 	my $top_query = "";
-	my ($query_name, $match_name, $name_anchor, $gi, $score, $e_value);
+	my ($query_name, $match_name, $name_anchor, $acc, $score, $e_value);
 	while(my $line = <IN>) {
 		if($line =~ /<b>Query=<\/b>/) {
 			$acc_query++;
@@ -220,62 +222,69 @@ if ($format) {
 			$query_flag = 0;
 		}
 		
-		if($line =~ /^(.*)\s+\<a href\s*=\s*(#\S+)>\s*\S+<\/a>/) {
+		if($line =~ /^\s*(.*)\s+\<a href\s*=\s*(#\S+)>\s*\S+<\/a>/) {
 			$match_name = $1;
 			$name_anchor = $2;
-			$gi = 0;
-			if ($match_name =~ /gi\|(\d+)/ || $match_name =~ /\w+\|(\w+\.\d+)/) {
-				$gi = $1;
-				$match_name =~ /^\s*(.*?)[,;\s+]/;
-				$match_name = $1;
+			$acc = '';
+			if ($match_name =~ /^gi\|\d+\|\w+\|([A-Z]{1,5}\d+\.?\d+)/ or $match_name =~ /^gi\|\d+\|\w+\|([A-Z]{2}_\d+\.?\d+)/ or $match_name =~ /^([A-Z]{1,5}\d+\.\d+)/ or $match_name =~ /^([A-Z]{2}_\d+\.?\d+)/ or $match_name =~ /^gnl\|\w+\|([A-Z]{1,5}\d+\.?\d+)/) {	# blastn, tblastn, tblastx
+				$acc = $1;
+				if ($match_name =~ /^(.*?)[,;\s+]/) {
+					$match_name = $1;
+				}				
 				$match_name =~ s/\|/!#%/g;
 				$line =~ s/\|/!#%/g;
-				$line =~ s/$match_name/<a href=http:\/\/www.ncbi.nlm.nih.gov\/nuccore\/$gi?report=genbank target=_blank>$match_name<\/a>/;				
+				$line =~ s/$match_name/<a href=https:\/\/www.ncbi.nlm.nih.gov\/nuccore\/$acc?report=genbank target=_blank>$match_name<\/a>/;				
 				$match_name =~ s/!#%/\|/g;
 				$line =~ s/!#%/\|/g;
-				$link = "<a href=http://www.ncbi.nlm.nih.gov/nuccore/$gi?report=genbank target=_blank>$match_name</a>";
-			}elsif($match_name =~ /^\s*(.*?)[,;\s+]/) {
+				$link = "<a href=https://www.ncbi.nlm.nih.gov/nuccore/$acc?report=genbank target=_blank>$match_name</a>";
+			}elsif($match_name =~ /^(.*?)[,;\s+]/) {
 				$match_name = $1;
 			}
 			$line =~ s/$name_anchor/#$query_name$match_name/;
-		}elsif($line =~ /^(.*?)<a (name\s*=\s*\S+)><\/a>\s*(.*?)$/) {
+		}elsif($line =~ /^\s*(.*?)<a (name\s*=\s*\S+)><\/a>/) {
 			$name_anchor = $2;
-			$match_name = $3;
 			if ($1 =~ /<script src=\"blastResult\.js\"><\/script>/) {
 				$line =~ s/<script src=\"blastResult\.js\"><\/script>//;
 			}
-			$gi = 0;
-			if ($match_name =~ /gi\|(\d+)/ || $match_name =~ /\w+\|(\w+\.\d+)/) {	# blastn
-				$gi = $1;
+			if ($line =~ /><a name=\S+><\/a>\s+(.*)$/) {	# until blast 2.2.31+
+				$match_name = $1;
+			}elsif ($line =~ />(.*?)<a name=\S+><\/a>/) {	# after blast 2.2.31+
+				$match_name = $1;
+			}
+			$acc = '';
+			if ($match_name =~ /^gi\|\d+\|\w+\|([A-Z]{1,5}\d+\.?\d+)/ or $match_name =~ /^gi\|\d+\|\w+\|([A-Z]{2}_\d+\.?\d+)/ or $match_name =~ /^([A-Z]{1,5}\d+\.?\d+)/ or $match_name =~ /^([A-Z]{2}_\d+\.?\d+)/ or $match_name =~ /^gnl\|\w+\|([A-Z]{1,5}\d+\.?\d+)/) {	# blastn
+				$acc = $1;
 				if ($match_name =~ /^(.*?)[,;\s+]/ || $match_name =~ /^(\S+)/) {
 					$match_name = $1;
 				}
 				$match_name =~ s/\|/!#%/g;
 				$line =~ s/\|/!#%/g;
-				$line =~ s/$match_name/$query_name on <a href=http:\/\/www.ncbi.nlm.nih.gov\/nuccore\/$gi?report=genbank target=_blank>$match_name<\/a>/;	
+				$line =~ s/<\/a>\s+$match_name/<\/a> $query_name on <a href=https:\/\/www.ncbi.nlm.nih.gov\/nuccore\/$acc?report=genbank target=_blank>$match_name<\/a>/;
+				$line =~ s/^>$match_name/>$query_name on <a href=https:\/\/www.ncbi.nlm.nih.gov\/nuccore\/$acc?report=genbank target=_blank>$match_name<\/a>/;
 				$match_name =~ s/!#%/\|/g;
 				$line =~ s/!#%/\|/g;
-				$link = "<a href=http://www.ncbi.nlm.nih.gov/nuccore/$gi?report=genbank target=_blank>$match_name</a>";
+				$link = "<a href=https://www.ncbi.nlm.nih.gov/nuccore/$acc?report=genbank target=_blank>$match_name</a>";
 			}elsif($match_name =~ /^(.*?)[,;\s+]/ || $match_name =~ /^(\S+)/) {
 				$match_name = $1;
-				$line =~ s/$match_name/$query_name on $match_name/;
+				$line =~ s/<\/a>\s+$match_name/<\/a> $query_name on $match_name/;
+				$line =~ s/^>$match_name/>$query_name on $match_name/;
 				$link = $match_name;
 			}
-			$line =~ s/$name_anchor/name = $query_name$match_name/;			
+			$line =~ s/$name_anchor/name=$query_name$match_name/;			
 			$print_flag = 1;
 		}
 		
 		if($line =~ /<b>Query=<\/b>\s*$/) {
 			$query_name = "Query".$acc_query;
-			$line = "<a name = $query_name></a>".$line;
+			$line = "<a name=$query_name></a>".$line;
 		}elsif($line =~ /<b>Query=<\/b>\s+(.*?)[,;\s+]/) {
 			$query_name = $1;
-			$line = "<a name = $query_name></a>".$line;
+			$line = "<a name=$query_name></a>".$line;
 		}
 		
 		if($num_page > 1) {		
 			if($open_flag == 1) {
-				open(OUT, ">$tmp_file") || die "Cannot open out file: $tmp_file\n";
+				open OUT, ">", "$tmp_file" or die "couldn't open out file: $tmp_file\n";
 				print OUT $top_query;
 				$open_flag = 0;
 			}
@@ -292,7 +301,7 @@ if ($format) {
 				}	
 				
 				if ($open_flag == 1) {	
-					open(INDEX, ">$index_file") || die("Cannot open index file: $index_file\n");
+					open INDEX, ">", "$index_file" or die "couldn't open index file: $index_file\n";
 					print INDEX "<HTML>\n";
 					print INDEX "<TITLE>BLAST Search Results</TITLE>\n";
 					print INDEX "<BODY BGCOLOR=\"#FFFFFF\" LINK=\"#0000FF\" VLINK=\"#660099\" ALINK=\"#660099\">\n";
@@ -317,7 +326,7 @@ if ($format) {
 					print INDEX "|";
 					for(my $i = $start_query; $i <= $end_query; $i++) {
 						my $query = shift(@query_array);
-						print INDEX "<a href = #$query>$query</a>|";
+						print INDEX "<a href=#$query>$query</a>|";
 					}
 					print INDEX "\n<hr>\n\n";					
 					print OUT "</body></html>";
@@ -349,7 +358,7 @@ if ($format) {
 				if(scalar @query_array > 1) {
 					print OUT1 "|";
 					foreach (@query_array) {
-						print OUT1 "<a href = #$_>$_</a>|";
+						print OUT1 "<a href=#$_>$_</a>|";
 					}
 					print OUT1 "\n";
 				}
@@ -383,15 +392,14 @@ if ($format) {
 		}
 	}
 	print OUT4 $cutoff_count."\n";
-	
+	close IN;
 	close OUT1;
 	close OUT2;
 	close OUT3;
 	close OUT4;
 }
-close IN;
 close LOG;
 
-open(OUT6, ">$dataPath/$jobid.blaststring.txt") || die "Can't open out file\n";
+open OUT6, ">", "$dataPath/$jobid.blaststring.txt" or die "couldn't open out $jobid.blaststring.txt: $!\n";
 print OUT6 "Finished blasting.\n";
 close OUT6;

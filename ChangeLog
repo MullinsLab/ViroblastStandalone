@@ -1,3 +1,8 @@
+Jan. 9, 2017
+# version 2.6+
+  # accommodated NCBI's changes in https and phasing out gi
+  # correctly parsed output of late version of blast+ (> 2.2.31+)
+
 Dec. 10, 2014
 # version 2.5.3+
   # fixed the missing link of the last blast output html page caused by previous update
