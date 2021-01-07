@@ -1,5 +1,5 @@
-#! /usr/bin/perl -w
-# $Id: legacy_blast.pl 195935 2010-06-28 20:32:08Z camacho $
+#! /usr/bin/env perl
+# $Id: legacy_blast.pl 609147 2020-05-27 11:52:21Z ivanov $
 # ===========================================================================
 #
 #                            PUBLIC DOMAIN NOTICE
@@ -68,7 +68,7 @@ if ($application eq "blastall") {
 } elsif ($application eq "seedtop") {
     $cmd = &handle_seedtop(\$print_only);
 } elsif ($application =~ /version/) {
-    my $revision = '$Revision: 195935 $';
+    my $revision = '$Revision: 609147 $';
     $revision =~ s/\$Revision: | \$//g;
     print "$0 version $revision\n";
     goto CLEAN_UP;

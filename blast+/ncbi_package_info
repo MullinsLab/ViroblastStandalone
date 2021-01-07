@@ -1,167 +1,297 @@
 PACKAGE_NAME: blast
-PACKAGE_VERSION: 2.2.24
-PACKAGE_SIGNATURE: ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
-PACKAGE_CONFIG: Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+PACKAGE_VERSION: 2.11.0
+PACKAGE_SIGNATURE: ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+PACKAGE_CONFIG: Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
 
 >>>>>  blastp
 
-blastp: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blastp: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:07:16
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blastp
 
 
 
 >>>>>  blastn
 
-blastn: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blastn: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:06:34
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blastn
 
 
 
 >>>>>  blastx
 
-blastx: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blastx: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:07:26
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blastx
 
 
 
 >>>>>  tblastn
 
-tblastn: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+tblastn: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:02:14
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  tblastn
 
 
 
 >>>>>  tblastx
 
-tblastx: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+tblastx: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:02:18
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  tblastx
 
 
 
 >>>>>  psiblast
 
-psiblast: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+psiblast: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 03:58:19
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  psiblast
 
 
 
 >>>>>  rpsblast
 
-rpsblast: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+rpsblast: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 03:59:48
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  rpsblast
 
 
 
 >>>>>  rpstblastn
 
-rpstblastn: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+rpstblastn: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 03:59:58
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  rpstblastn
 
 
 
 >>>>>  makembindex
 
-makembindex: 0.0.0
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+makembindex: 2.11.0
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 03:57:08
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  makembindex
 
 
 
 >>>>>  segmasker
 
 segmasker: 1.0.0
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:00:50
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  segmasker
 
 
 
 >>>>>  dustmasker
 
 dustmasker: 1.0.0
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:08:05
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  dustmasker
 
 
 
 >>>>>  windowmasker
 
 windowmasker: 1.0.0
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:03:02
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  windowmasker
+
+ window-masker-algorithm:1.0.0
+
+ windowmasker-statistics-algorithm-version:1.0.0
+
+ windowmasker-statistics-format-version:ascii 1.0.0
+
+ windowmasker-statistics-format-version:binary 1.0.0
+
+ windowmasker-statistics-format-version:oascii 1.0.0
+
+ windowmasker-statistics-format-version:obinary 1.0.0
+
+
+
+>>>>>  deltablast
+
+deltablast: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:08:04
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  deltablast
 
 
 
 >>>>>  makeblastdb
 
-makeblastdb: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+makeblastdb: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 03:56:45
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  makeblastdb
 
 
 
 >>>>>  blastdbcmd
 
-blastdbcmd: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blastdbcmd: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:05:41
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blastdbcmd
 
 
 
 >>>>>  blastdb_aliastool
 
-blastdb_aliastool: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blastdb_aliastool: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:05:17
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blastdb_aliastool
 
 
 
 >>>>>  convert2blastmask
 
-convert2blastmask: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+convert2blastmask: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:07:56
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  convert2blastmask
 
 
 
 >>>>>  blastdbcheck
 
-blastdbcheck: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blastdbcheck: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:05:34
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blastdbcheck
+
+
+
+>>>>>  makeprofiledb
+
+makeprofiledb: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 03:57:10
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  makeprofiledb
 
 
 
 >>>>>  blast_formatter
 
-blast_formatter: 2.2.24+
-Package: blast 2.2.24, build Aug 12 2010 17:47:58
- ICC_1010-ReleaseMT--i686-pc-linux2.6.5-gnu2.3.5-coredev1
- Linux32-Suse : icc : ./c++/compilers/unix/ICC.sh --with-strip --without-debug --without-pcre --with-mt --with-flat-makefile --without-dll LDFLAGS=-static-libcxa --with-build-root-sfx=--Linux32-Suse-icc --with-fake-root=/am/ncbiapdata/release/blast/src/2.2.24/Linux32-Suse-icc/c++ --without-ccache --without-caution --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+blast_formatter: 2.11.0+
+ Package: blast 2.11.0, build Oct  6 2020 03:24:05
+ Package-Config:  Linux64-Centos : icc : ./c++/compilers/unix/ICC.sh 1900 --with-static --without-dll --with-bin-release --with-strip --without-debug --without-pcre --with-mt --with-openmp --with-flat-makefile --with-experimental=Int8GI --without-vdb --without-gnutls --without-gcrypt --with-build-root-sfx=--Linux64-Centos-icc --with-flat-makefile --with-ncbi-public --without-ccache --without-caution --without-runpath --without-makefile-auto-update --with-projects=scripts/projects/blast/project.lst --with-internal
+ Build-Signature:  ICC_1903-ReleaseMT64--x86_64-unknown-linux3.10.0-gnu2.17-coremake11
+ Build-Date:  Oct  6 2020 04:04:44
+ Build-ID:  d884ab67-4d70-4247-976d-9b5c8dbf4d53
+ Subversion-Revision:  617724
+ Production-Version:  20200404
+ Built-As:  blast_formatter
 
 
 
