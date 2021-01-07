@@ -24,6 +24,7 @@ set_time_limit(600);
 $jobid = (empty($_GET['jobid'])) ? '' : $_GET['jobid'];
 $target = (empty($_POST['target'])) ? '' : $_POST['target'];
 $dldseq = (empty($_POST['dldseq'])) ? '' : $_POST['dldseq'];
+$seqtype = (empty($_POST['seqtype'])) ? '' : $_POST['seqtype'];
 $downloadFile = $jobid.".download.fas";
 $blastFiles = array();
 $fp_log = fopen("$dataPath/$jobid.log", "r") or die("Cannot open $jobid.log to read");
@@ -58,60 +59,97 @@ if($dldseq) {
 	}
 	fclose($fp_parse);
 }
-
 $sbjcts = array();
+$querysbjcts = array();
 for($i = 0; $i < count($target); $i++) {
 	list($page, $query, $sbjct) = preg_split("/\t/", $target[$i]);
 	$sbjcts[$sbjct] = 1;
-}
-
-$sbjctSeq = array();
-$sbjctTitle = array();
-$flag = 0;
-for ($i = 0; $i < count($blastFiles); $i++) {
-	$file = $blastFiles[$i];
-	$fp = fopen ($file, "r") or die ("couldn't open $file");
-	while(!feof($fp)) {
-		$line = fgets($fp);
-		if (preg_match("/^>(.*?)[,;\s+]/", $line, $match)) {
-			$seqName = $match[1];
-//			if (preg_match("/\.\/db\/protein\//", $file, $match1) && preg_match("/\|?gi\|\d+\|(.*)/", $seqName, $match2)) {	# proteindb will remove gi and gi number
-//				$seqName = $match2[1];
-//			}
-			if (array_key_exists ($seqName, $sbjcts)) {
-				$flag = 1;
-				$sbjctTitle[$seqName] = $line;
-			}else {
-				$flag = 0;
-			}
-		}elseif ($flag) {
-			$line = preg_replace("/[\-\s]/", "", $line);
-			$line = strtoupper($line);
-			if (!array_key_exists ($seqName, $sbjctSeq)) {
-				$sbjctSeq[$seqName] = "";
-			}
-			$sbjctSeq[$seqName] .= $line;
-		}
-	}
+	$querysbjct = $query."-".$sbjct;
+	$querysbjcts[$querysbjct] = 1;
 }
 
 $fp_dld = fopen("$dataPath/$jobid.download.fas", "w", 1) or die ("couldn't open download.fas to write");
 
-while (list ($name, $value) = each ($sbjcts)) {
-	$seqName = $sbjctTitle[$name];
-	$seq = $sbjctSeq[$name];
-	echo "$seqName<br>";
-	fwrite ($fp_dld, "$seqName");
-	while($seq) {
-		$first = substr($seq, 0, 70);
-		$seq = substr($seq, 70);
-		echo "$first<br>";
-		fwrite($fp_dld, "$first\n");
+if ($seqtype == "entire") {
+	$sbjctSeq = array();
+	$sbjctTitle = array();
+	$flag = 0;
+	for ($i = 0; $i < count($blastFiles); $i++) {
+		$file = $blastFiles[$i];
+		$fp = fopen ($file, "r") or die ("couldn't open $file");
+		while(!feof($fp)) {
+			$line = fgets($fp);
+			if (preg_match("/^>(.*?)[,;\s+]/", $line, $match) || preg_match("/^>(\S+)/", $line, $match)) {
+				$seqName = $match[1];
+				if (array_key_exists ($seqName, $sbjcts)) {
+					$flag = 1;
+					$sbjctTitle[$seqName] = $line;
+				}else {
+					$flag = 0;
+				}
+			}elseif ($flag) {
+				$line = preg_replace("/[\-\s]/", "", $line);
+				$line = strtoupper($line);
+				if (!array_key_exists ($seqName, $sbjctSeq)) {
+					$sbjctSeq[$seqName] = "";
+				}
+				$sbjctSeq[$seqName] .= $line;
+			}
+		}
 	}
-	echo "<br>";
-	fwrite($fp_dld, "\n");
-}
-fclose ($fp_dld);
+	while (list ($name, $value) = each ($sbjcts)) {
+		$seqName = $sbjctTitle[$name];
+		$seq = $sbjctSeq[$name];
+		echo "$seqName<br>";
+		fwrite ($fp_dld, "$seqName");
+		while($seq) {
+			$first = substr($seq, 0, 70);
+			$seq = substr($seq, 70);
+			echo "$first<br>";
+			fwrite($fp_dld, "$first\n");
+		}
+		echo "<br>";
+		fwrite($fp_dld, "\n");
+	}
+}elseif ($seqtype == "mapping") {
+	$flag = 0;
+	$fp_st = fopen("$dataPath/$jobid.out", "r") or die ("couldn't open $jobid.out.");
+	while(!feof($fp_st)) {
+		$line = fgets($fp_st);
+		$line = rtrim($line);				
+		if (preg_match("/^<b>Query=<\/b>\s+(.*?)[,;\s+]/", $line, $match) || preg_match("/^<b>Query=<\/b>\s+(\S+)/", $line, $match)) {
+			$query = $match[1];
+		}elseif (preg_match("/^><a(.*?)<\/a>\s+(.*?)([,;\s+].*)/", $line, $match) || preg_match("/^><a(.*?)<\/a>\s+(\S+)/", $line, $match)) {					
+			$id = $name = $match[2];
+			if ($match[3]) {
+				$name = $match[2].$match[3];
+			}
+			$queryid = $query."-".$id;				
+			if (array_key_exists ($queryid, $querysbjcts)) {
+				$flag = 1;					
+			}else {
+				$flag = 0;
+			}
+		}elseif ($flag == 1) {
+			if (preg_match("/Length=/", $line, $match)) {
+				$flag = 2;
+				echo ">$name<br>";
+				fwrite($fp_dld, ">$name\n");	
+			}else {
+				$name .= " $line";
+			}
+		}elseif ($flag == 2) {
+			if (preg_match("/^Sbjct\s+\d+\s+(\S+)\s+\d+/", $line, $match)) {
+				$seq = $match[1];
+				echo "$seq<br>";
+				fwrite($fp_dld, "$seq\n");
+			}
+		}
+	}
+	fclose($fp_st);
+}		
+fclose($fp_dld);
+
 
 ?>
 

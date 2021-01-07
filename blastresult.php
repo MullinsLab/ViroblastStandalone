@@ -406,7 +406,9 @@ if (file_exists($errFile) && filesize($errFile) > 0) {
 				echo "</td></tr></table></p>";
 				echo "</form>";		
 				echo "<form action='sequence.php?jobid=$jobid' method='post' target='_blank' onsubmit=\"return checkform(this);\">";
-				echo "<p>Retrieve and download subject sequences in FASTA format:</p>";		
+				echo "<p>Retrieve and download subject sequences in FASTA format: ";	
+				echo "<input type='radio' checked name='seqtype' value='entire'>Entire sequence ";
+				echo "<input type='radio' name='seqtype' value='mapping'>Region mapped to query</p>";	
 				echo "<p><input type='checkbox' name='dldseq' value='all'>  Check here to download All sequences... ";
 				echo "OR select particular sequences of interest below</p>";	
 				echo "<p><input type='submit' value='Submit'> your selection of sequences to download</p>";	
