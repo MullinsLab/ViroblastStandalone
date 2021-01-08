@@ -1,3 +1,9 @@
+Jan. 7, 2021
+# version 2.11.0+
+  # implements NCBI's blast+ version of 2.11.0
+  # provides options for user to download subject's entire sequence (default) or the region
+    mapping to the query sequence
+
 Jan. 9, 2017
 # version 2.6+
   # accommodated NCBI's changes in https and phasing out gi
