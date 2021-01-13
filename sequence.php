@@ -100,56 +100,109 @@ if ($seqtype == "entire") {
 	while (list ($name, $value) = each ($sbjcts)) {
 		$seqName = $sbjctTitle[$name];
 		$seq = $sbjctSeq[$name];
-		echo "$seqName<br>";
 		fwrite ($fp_dld, "$seqName");
 		while($seq) {
-			$first = substr($seq, 0, 70);
-			$seq = substr($seq, 70);
-			echo "$first<br>";
+			$first = substr($seq, 0, 80);
+			$seq = substr($seq, 80);
 			fwrite($fp_dld, "$first\n");
 		}
-		echo "<br>";
-		fwrite($fp_dld, "\n");
 	}
 }elseif ($seqtype == "mapping") {
+	$accName = array();
+	$querySeq = array();
+	$sbjctSeq = array();
+	$sbjctOri = array();
 	$flag = 0;
 	$fp_st = fopen("$dataPath/$jobid.out", "r") or die ("couldn't open $jobid.out.");
 	while(!feof($fp_st)) {
 		$line = fgets($fp_st);
-		$line = rtrim($line);				
+		$line = rtrim($line);	
 		if (preg_match("/^<b>Query=<\/b>\s+(.*?)[,;\s+]/", $line, $match) || preg_match("/^<b>Query=<\/b>\s+(\S+)/", $line, $match)) {
 			$query = $match[1];
 		}elseif (preg_match("/^><a(.*?)<\/a>\s+(.*?)([,;\s+].*)/", $line, $match) || preg_match("/^><a(.*?)<\/a>\s+(\S+)/", $line, $match)) {					
-			$id = $name = $match[2];
+			$acc = $name = $match[2];
 			if ($match[3]) {
 				$name = $match[2].$match[3];
 			}
-			$queryid = $query."-".$id;				
-			if (array_key_exists ($queryid, $querysbjcts)) {
-				$flag = 1;					
+			$queryacc = $query."-".$acc;
+			if (array_key_exists ($queryacc, $querysbjcts)) {
+				$flag = 1;
 			}else {
 				$flag = 0;
 			}
 		}elseif ($flag == 1) {
 			if (preg_match("/Length=/", $line, $match)) {
 				$flag = 2;
-				echo ">$name<br>";
-				fwrite($fp_dld, ">$name\n");	
+				$accName[$acc] = $name;
 			}else {
 				$name .= " $line";
 			}
-		}elseif ($flag == 2) {
-			if (preg_match("/^Sbjct\s+\d+\s+(\S+)\s+\d+/", $line, $match)) {
-				$seq = $match[1];
-				echo "$seq<br>";
-				fwrite($fp_dld, "$seq\n");
+		}elseif ($flag == 2) {	
+			if (preg_match("/Score =/", $line, $match)) {
+				$qstart = $qend = $sstart = $send = 0;
+			}
+			if (preg_match("/Strand=(.*)/", $line, $match)) {				
+				$minusflag = $match[1]; 
+			}
+			if (preg_match("/^Query\s+(\d+)\s+(.*)\s+(\d+)$/", $line, $match)) {
+				if ($qstart == 0) {
+					$qstart = $match[1];
+				}
+				$qseq = $match[2];
+				$qseq = preg_replace("/<(.*?)>/", "", $qseq);
+				$qseq = preg_replace("/-+/", "", $qseq);
+				$qseq = preg_replace("/\s+/", "", $qseq);
+			}
+			if (preg_match("/^Sbjct\s+(\d+)\s+(.*)\s+(\d+)$/", $line, $match)) {
+				if ($sstart == 0) {
+					$sstart = $match[1];
+					$sbjctOri[$query][$acc][$qstart][$sstart] = $minusflag;
+				}
+				$sseq = $match[2];
+				$sseq = preg_replace("/<(.*?)>/", "", $sseq);
+				$sseq = preg_replace("/-+/", "", $sseq);
+				$sseq = preg_replace("/\s+/", "", $sseq);
+				$querySeq[$query][$acc][$qstart][$sstart] .= $qseq;
+				$sbjctSeq[$query][$acc][$qstart][$sstart] .= $sseq;				
 			}
 		}
 	}
-	fclose($fp_st);
+	fclose($fp_st);	
+
+	foreach ($sbjctSeq as $query => $qarray) {
+		foreach ($qarray as $acc => $aarray) {
+			foreach ($aarray as $qstart => $qsarray) {
+				foreach ($qsarray as $sstart => $sbjctseq) {
+					$queryseq = $querySeq[$query][$acc][$qstart][$sstart];
+					$mflag = $sbjctOri[$query][$acc][$qstart][$sstart];
+					$qlen = strlen($queryseq);
+					$slen = strlen($sbjctseq);
+					$qend = $qstart + $qlen - 1;
+					if ($mflag == "Plus/Minus") {
+						$send = $sstart - $slen + 1;
+					}elseif ($mflag == "Plus/Plus") {
+						$send = $sstart + $slen - 1;
+					}
+					fwrite($fp_dld, ">".$accName[$acc]." (Subject: $acc, $sstart..$send; Query: $query, $qstart..$qend)\n");	
+					while($sbjctseq) {
+						$first = substr($sbjctseq, 0, 80);
+						$sbjctseq = substr($sbjctseq, 80);
+						fwrite($fp_dld, "$first\n");
+					}
+				}
+			}
+		}
+	}
 }		
 fclose($fp_dld);
 
+$fp = fopen("$dataPath/$jobid.download.fas", "r") or die ("couldn't open $jobid.download.fas.");
+while(!feof($fp)) {
+	$line = fgets($fp);
+	$line = rtrim($line);
+	echo "$line<br>";
+}
+fclose($fp);
 
 ?>
 
