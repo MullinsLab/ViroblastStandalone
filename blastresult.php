@@ -9,6 +9,7 @@
 
 ?>
 
+<!DOCTYPE html>
 <html>
 <head><title>ViroBLAST Result Page</title>
 <link href="stylesheets/viroblast.css"  rel="Stylesheet" type="text/css" />

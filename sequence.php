@@ -9,6 +9,7 @@
 
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
 <title>Sequence Download Page</title>

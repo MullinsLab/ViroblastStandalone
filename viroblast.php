@@ -9,6 +9,7 @@
 
 ?>
 
+<!DOCTYPE html>
 <html>
 <head> 
 <title>ViroBlast Home Page</title>
