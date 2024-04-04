@@ -33,29 +33,23 @@ sequence.
 
 ## Installation of the standalone ViroBLAST server
 
-After downloading the file viroblast.tar.gz, place it into
-document directory of HTTPD server in your computer and
-uncompress it by
-
-    gzip -d viroblast.tar.gz
-    tar -xvpf viroblast.tar
-    
-It is important to have the parameter "p" in tar options. It
-will preserve file access options stored in the
-distribution. Directory for the BLAST output (data) should
+### Clone this repository in the document directory of HTTPD server in your computer
+```
+git clone https://github.com/MullinsLab/ViroblastStandalone viroblast
+```
+  - It will create a directory called "viroblast" in your designated directory
+  - Directory for the BLAST output (viroblast/data/) should
 have readable, writeable and executable permissions for
-everyone (777).
-
-After you have uncompressed the distribution file, the
-directory "viroblast" will be created. You can access the
-ViroBLAST home page via URL:
+everyone (777)
+  - You can access the ViroBLAST home page via URL:
 
     http://your_hostname/viroblast/viroblast.php
+    
 
 ## Configuration of BLAST program
 
 The standalone ViroBLAST server runs the NCBI BLAST+
-program and has been tested on Linux, Mac OS X and Sun OS.
+program and has been tested on Linux, Mac OS X.
 The distribution comes with a standalone BLAST+ program for
 linux/x64. It is your responsibility to download
 appropriate standalone BLAST+ for your computer's operating
